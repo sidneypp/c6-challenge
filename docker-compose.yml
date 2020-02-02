@@ -1,0 +1,27 @@
+version: '3'
+services:
+  nginx:
+    image: smebberson/alpine-nginx
+    container_name: invillia-nginx
+    ports:
+      - 81:80
+    volumes:
+      - ./docker/nginx:/etc/nginx/conf.d
+    depends_on:
+      - php
+      - mysql
+  php:
+    build:
+      context: docker/php
+      dockerfile: Dockerfile
+    container_name: invillia-php
+    volumes:
+      - ./:/invillia:cached
+  mysql:
+    image: mysql
+    container_name: invillia-mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "invillia"
