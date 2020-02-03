@@ -28,8 +28,7 @@ Create a Symfony2 application to manually upload the given XMLs and have an opti
 -   Run `docker-compose up -d` to 
 -   Run `php bin/console doctrine:migrations:migrate` to create the tables
 -   Finally run `php bin/console doctrine:fixtures:load` to seeds the users table with one user to test the authentication
--   If everything worked correctly, you can run `php artisan serve` and navigate to `http://localhost:8000/` 🚀
--   If it didn't, run `php artisan inspire` to get inspired and try again! 😛
+-   Update your system host file(in mac run `sudo vim /etc/hosts`) and add `127.0.0.1 mysql`
 
 ## API Documentation
 
