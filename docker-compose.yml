@@ -3,25 +3,36 @@ services:
   nginx:
     image: smebberson/alpine-nginx
     container_name: invillia-nginx
-    ports:
-      - 81:80
     volumes:
       - ./docker/nginx:/etc/nginx/conf.d
+    ports:
+      - 8080:80
     depends_on:
       - php
       - mysql
+    networks:
+      - default
   php:
-    build:
-      context: docker/php
-      dockerfile: Dockerfile
+    build: docker/php
     container_name: invillia-php
     volumes:
       - ./:/invillia:cached
+    networks:
+      - default
   mysql:
-    image: mysql
+    image: mysql:5.7
     container_name: invillia-mysql
+    restart: always
     ports:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_DATABASE: "invillia"
+    networks:
+      - default
+
+#Docker Networks
+networks:
+  default:
+    driver: bridge
+
