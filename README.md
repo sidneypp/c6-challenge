@@ -29,6 +29,7 @@ Create a Symfony2 application to manually upload the given XMLs and have an opti
 -   Run `php bin/console doctrine:migrations:migrate` to create the tables
 -   Finally run `php bin/console doctrine:fixtures:load` to seeds the users table with one user to test the authentication
 -   Update your system host file(in mac run `sudo vim /etc/hosts`) and add `127.0.0.1 mysql`
+-   If everything worked correctly, you can navigate to `http://localhost:8080/` 🚀
 
 ## API Documentation
 
