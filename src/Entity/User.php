@@ -29,6 +29,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=500)
      */
     private $password;
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
 
     public function getId(): int
     {
